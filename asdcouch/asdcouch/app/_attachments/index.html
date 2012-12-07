@@ -1,29 +1,1382 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My New CouchApp</title>
-    <link rel="stylesheet" href="style/main.css" type="text/css">
-  </head>
-  <body>
-    <div id="account"></div>
+<!-- John Williams
+	Project: ASD
+	Oct 28, 2012
+	Week 2
+--> 
 
-    <h1>Generated CouchApp</h1>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>	
+	<title>Cast My Vote</title>
+	<meta name="HandheldFriendly" content="True"/>
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="cleartype" content="on"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.min.css" />
+	<link rel="stylesheet" href="jquery.mobile.pagination.css">
+	<script src="modernizr.custom.min.js"></script>
+</head>
+<body>
 
-    <div id="profile"></div>
-    <div id="items"></div>
+	<div data-role="page" id="home">
 
-    <div id="sidebar">
-      <p>Edit welcome message.</p>
-      <p>Ideas: You could easily turn this into a photo sharing app, or a grocery list, or a chat room.</p>
-    </div>
-  </body>
-  <script src="vendor/couchapp/loader.js"></script>
-  <script type="text/javascript" charset="utf-8">
-    $.couch.app(function(app) {
-      $("#account").evently("account", app);
-      $("#profile").evently("profile", app);
-      $.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
-      $("#items").evently("items", app);
-    });
-  </script>
+		<div data-role="header" data-position="fixed" data-theme="b">
+		<center><a href="#home"><img src="fl-logo.png" alt="logo" /></center></a>
+		</div>	
+		<br />
+		<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		
+		<div data-role="content">
+			<ul data-role="listview"  data-filter="true" data-inset="true">
+				<li><a href="#daisy">
+					<h3>Democrat</h3>
+					<p>View Democrat Candidates.</p>
+					<span class="ui-li-count">2</span>
+				</a></li>
+				
+				<li><a href="#lily">
+					<h3>Republican</h3>
+					<p>View Republican Candidates.</p>
+					<span class="ui-li-count">14</span>
+				</a></li>
+				
+				<li><a href="#orchid">
+					<h3>Independent</h3>
+					<p>View Independent Candidates.</p>
+					<span class="ui-li-count">2</span>
+				</a></li>
+				
+				<li><a href="#rose">
+					<h3>Libertarian</h3>
+					<p>View Libertarian Candidates.</p>
+					<span class="ui-li-count">1</span>
+				</a></li>
+				
+			</ul>
+			<a href="#shopnews" data-theme="b" data-role="button">Latest Polls</a> 			
+		</div> 
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="daisy" data-add-back-btn="true">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Democrats</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>	
+		<div data-role="content">
+			<ul data-role="listview" data-filter="true" data-inset="true">
+				<li>
+					<a href="#daisylist">
+						<img src="/Barack_Obama.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Barack Obama</h3>
+						<p>Current President - Running</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="#daisylist2">
+						<img src="/Randall_Terry.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Randall Terry</h3>
+						<p>Running</p>
+					</a>
+				</li>																
+
+			</ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="lily" data-add-back-btn="true">	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Republicans</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+			<ul data-role="listview" data-filter="true" data-inset="true">
+				<li>
+					<a href="#lilylist">
+						<img src="/Mitt_Romney.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Mitt Romney</h3>
+						<p>Running</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="#lilylist2">
+						<img src="/Newt_Gingrich.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Newt Gingrich</h3>
+						<p>Withdrawn</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="#lilylist3">
+						<img src="/Ron_Paul.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Ron Paul</h3>
+						<p>Running</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="#lilylist4">
+						<img src="/Herman_Cain.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Herman Cain</h3>
+						<p>Withdrawn</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="#lilylist5">
+						<img src="/Rick_Santorum.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Rick Santorum</h3>
+						<p>Withdrawn</p>
+					</a>
+				</li>				
+
+			</ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="orchid" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Independents</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+			<ul data-role="listview" data-filter="true" data-inset="true">
+				<li>
+					<a href="#orchidlist">
+						<img src="/Joseph_Schriner.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Joseph Schriner</h3>
+						<p>Running</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="#orchidlist2">
+						<img src="/James_Mccall.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>James McCall</h3>
+						<p>Running</p>
+					</a>
+				</li>				
+
+			</ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="rose" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Libertarians</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+			<ul data-role="listview" data-filter="true" data-inset="true">
+				<li>
+					<a href="#roselist">
+						<img src="/Gary_Johnson.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Gary Johnson</h3>
+						<p>Running</p>
+					</a>
+				</li>				
+
+			</ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>	
+			
+
+<!--Limited editions pagination-->
+	<div data-role="page" id="limitede1" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Basket Edition</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+		
+			<center><a href="#Construction"><img src="basketofsunshine.jpg" alt="1" width="200" height="200"><br />Basket of Sunshine</a></center>		
+				<ul data-role="pagination">
+					<li class="ui-pagination-prev"><a href="#limited">Home</a></li>
+					<li class="ui-pagination-next"><a href="#limitede2">Next</a></li>
+				</ul>
+					
+			
+		</div>	
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="limitede2" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>All About Me</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+		
+			<center><a href="#Construction"><img src="allwhite.jpg" alt="1" width="200" height="200"><br />All White Lilies</a></center>		
+				<ul data-role="pagination">
+					<li class="ui-pagination-prev"><a href="#limitede1">Prev</a></li>
+					<li class="ui-pagination-next"><a href="#limitede3">Next</a></li>
+				</ul>
+					
+			
+		</div>	
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="limitede3" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Romance of Europe</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+		
+			<center><a href="#Construction"><img src="springcountry.jpg" alt="1" width="200" height="200"><br />Spring Country Tulips</a></center>		
+				<ul data-role="pagination">
+					<li class="ui-pagination-prev"><a href="#limitede2">Prev</a></li>
+					<li class="ui-pagination-next"><a href="#limitede4">Next</a></li>
+				</ul>
+					
+			
+		</div>	
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="limitede4" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Lavender Dreams</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+		
+			<center><a href="#Construction"><img src="lavendermist.jpg" alt="1" width="200" height="200"><br />Lavender Mist Orchids</a></center>		
+				<ul data-role="pagination">
+					<li class="ui-pagination-prev"><a href="#limitede3">Prev</a></li>
+					<li class="ui-pagination-next"><a href="#limitede5">Next</a></li>
+				</ul>
+					
+			
+		</div>	
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="limitede5" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>It's Your Day</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+		
+			<center><a href="#Construction"><img src="stargazer.jpg" alt="1" width="200" height="200"><br />Stargazer Lilies</a></center>		
+				<ul data-role="pagination">
+					<li class="ui-pagination-prev"><a href="#limitede4">Prev</a></li>
+				</ul>
+					
+			
+		</div>	
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+		
+	</div>	
+				
+<!--end-->		
+	
+	<div data-role="page" id="search" data-add-back-btn="true">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<center><a href="#home"><img src="fl-logo.png" alt="logo" /></center></a>
+		</div>
+		<br /><br /><br />		
+		<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+<label for="search-basic" class="ui-hidden-accessible">Search Input:</label>
+<input type="search" name="search" id="searc-basic" value="" />
+		
+			<p>Use this page to search this app.</p>
+					
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search" class="ui-btn-active">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul> 
+			
+			</div>
+		</div>	
+	</div>
+
+
+
+	<div data-role="page" id="GitHub" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<center><a href="#home"><img src="fl-logo.png" alt="logo" /></center></a>
+		</div>	
+		<br /><br /><br />		
+		<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+		
+			<div data-role="collapsible-set">
+		
+				<div data-role="collapsible" data-collapsed="false" data-content-theme="d">
+					<h3>GitHub WK2 Repository Link</h3>
+					<a href="https://github.com/ClubUgly/ASD4-WK2"><img src="GitHub_Logo.png" alt="1"><p>GitHub WK2 Repository Link</p></a>
+				</div>
+				<div data-role="collapsible" data-collapsed="true" data-content-theme="d">	
+					<h3>GitHub WK2 Live Link</h3>
+					<a href="http://clubugly.github.com/ASD4-WK2/index.html"><img src="Octocat.png" alt="1"><p>GitHub WK2 Live Link</p></a>
+				</div>	
+				<div data-role="collapsible" data-collapsed="true" data-content-theme="d">	
+					<h3>Youtube Links</h3>
+					<a href="http://youtu.be/PqYZlg-p7vI"><img src="Youtube_logo4.png" alt="1"><p>Youtube Video WK2</p></a>
+				</div>	
+				
+			</div>	
+			
+		</div>
+		
+			
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>	
+	</div>	
+	
+	<div data-role="page" id="Construction" data-add-back-btn="true">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Under Construction</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+		
+			<p>Under Construction. Coming Soon!</p>
+			
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>	
+	</div>		
+		
+<!--daisy list-->
+	<div data-role="page" id="daisylist" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Barack Obama</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="/Barack_Obama.png" alt="1" /><br /><p>Born to a Kenyan father and an American mother, the former constitutional law professor, lawyer, community activist and financial writer came into national prominence with a show stopping keynote address at the 2004 Democratic National Convention in Boston, befitting his reputation as a brilliant orator. In 2008, after a hard fought win against Hillary Clinton to secure the Democratic nomination, the then Senator from Illinois crushed Republican John McCain to become the first African American to claim the presidency, concluding his meteoric rise to the pinnacle of American politics. </p></div>
+			</div>	
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+	
+	<div data-role="page" id="daisylist2" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Randall Terry</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="/Randall_Terry.png" alt="1" /><br />At a glance, it may seem a little odd for a pro-life and anti-LGBT candidate to run for the Democratic nomination. A closer look however, would tell us that an estimated 30-40% of Democrats actually shares the 52-year old Terry’s views. And for those who consider this as nothing more than a publicity stunt by an anti-abortionist radical, think again. Randall Terry is planning to spend close to $3 million for a 30-second slot in the 2012 Super Bowl. </div>
+			</div>	
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+			
+	
+<!--Lily List-->
+	<div data-role="page" id="lilylist" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Mitt Romney</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="/Mitt_Romney.png" alt="1"  /><br />On August 30, 2012, Gov. Romney was nominated as the nominee for President in front of over 15,000 party faithful during the Republican National Convention in Tampa, Florida. </div>
+			</div>	
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>	
+	
+	<div data-role="page" id="lilylist2" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Newt Gingrich</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="Newt_Gingrich.png" alt="1" /><br />After a 13-year absence from mainstream politics, Newton Leroy Gingrich made a dramatic return to politics by announcing his candidacy for the Republican presidential nomination in May 2011. His campaign unfortunately began under a torrent of criticisms following his controversial statements on Medicare and a perceived attack of fellow Republican Paul Ryan’s budget proposal.</div>
+			</div>	
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+	
+	<div data-role="page" id="lilylist3" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Ron Paul</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="Ron_Paul.png" alt="1" /><br />The former medical doctor officially announced his candidacy for the 2012 Republican Presidential nomination on May 13, 2011. The 75-year old Texas Congressman will once again center his campaign on the theme of liberty, human rights and financial market reforms. With his small but vocal pockets of supporters spread all over the country, the Libertarian leaning Republican is set to be one of the most controversial characters on the campaign trail. </div>
+			</div>	
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+	
+	<div data-role="page" id="lilylist4" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Herman Cain</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="/Herman_Cain.png" alt="1" /><br />Cain's rise in popularity was reversed within weeks by numerous allegations of sexual misconduct and the acknowledgment that he made a series of payments to a friend, Ginger Winter, without his wife's knowledge. Winter claims the two had a 13-year affair. </div>
+			</div>	
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+	
+	<div data-role="page" id="lilylist5" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Rick Santorum</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="/Rick_Santorum.png" alt="1" /><br />The former two-term senator from Pennsylvania officially announced his entry into the GOP Presidential nomination race on June 6, 2011, symbolically launching his campaign at the Somerset County Courthouse, located not far from the coal mine where his grandfather first worked after arriving from Italy.</div>
+			</div>	
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>					
+	
+<!--Orchid List-->
+	<div data-role="page" id="orchidlist" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Joe Schriner</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="/Joseph_Schriner.png" alt="1" /><br />Joe Schriner is an American politician and journalist. He has run as an independent candidate for President of the United States in four consecutive election cycles. He ran in 2000, 2004, 2008, and is running in 2012.</div>
+
+			</div>	
+		</div>
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+	
+	<div data-role="page" id="orchidlist2" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About James McCall</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="/James_Mccall.png" alt="1" /><br />Was born on July 31, 1943 and raised in Brackenridge, PA., which is 18 miles NE of Pittsburgh on the great Allegheny River. The area was comprised primarily of coal-mining and steel-making villages, which had little more than taverns, five & dime stores, YMCA dances, 10 cent movie theaters and church softball leagues.</div>
+
+			</div>	
+		</div>
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+											
+
+<!--Rose List-->
+	<div data-role="page" id="roselist" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>About Gary Johnson</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true">
+			<div>
+				<div class="ui-block-a"><img src="/Gary_Johnson.png" alt="1" /><br />The former Libertarian Republican Governor does not attend church, is pro-choice, anti-big government, pro-immigration, an outspoken critic of the war on drugs and favors legalizing marijuana. He led New Mexico for eight years, during which time the state saw no tax increase, and he vetoed over 750 separate pieces of legislation to keep the government from growing. However, his views on civil liberties, foreign policy and drugs may be difficult for many conservatives to reconcile with.</div>
+
+			</div>	
+		</div>
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+							
+<!--News Feed-->
+	
+	<div data-role="page" id="shopnews" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Latest Polls</h1>
+		</div>
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+			<ul data-role="listview" data-filter="true" data-inset="true"data-theme="c" data-divider-theme="b">
+			<li data-role="list-divider">Latest Polls</li>
+				<li>
+					<a href="#news1">
+						<img src="latestpolls.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Tight race in Colorado</h3>
+						<p>November 1, 2012 - 12:31 pm</p> 
+						<span class="ui-li-count">5</span>
+					</a>
+				</li>
+				<li>
+					<a href="#news1">
+						<img src="latestpolls.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>What are the most important women's issues?</h3>
+						<p>October 31, 2012 - 12:00 pm</p>
+						<span class="ui-li-count">1</span>
+					</a>
+				</li>
+				
+				<li>
+					<a href="#news1">
+						<img src="latestpolls.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Are you better off today than four years ago?</h3>
+						<p>October 31, 2012 - 11:00 am</p>
+						<span class="ui-li-count">1</span>
+					</a>
+				</li>
+				
+				<li>
+					<a href="#news1">
+						<img src="latestpolls.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Obama the winner of third debate </h3>
+						<p>October 26, 2012 - 10:00 am</p>
+						<span class="ui-li-count">42</span>
+					</a>
+				</li>
+				<li>
+					<a href="#news1">
+						<img src="latestpolls.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Americans split on Obama's handling of energy policy</h3>
+						<p>October 22, 2012 - 10:00 am</p> 
+						<span class="ui-li-count">5</span>
+					</a>
+				</li>
+				<li>
+					<a href="#news1">
+						<img src="latestpolls.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Most Americans think education should be priority</h3>
+						<p>October 16, 2012 - 9:51 am</p> 
+						<span class="ui-li-count">5</span>
+					</a>
+				</li>
+				<li>
+					<a href="#news1">
+						<img src="latestpolls.png" style="padding: 5px;" width="60px" height="60px" />
+						<h3>Who won the second presidential debate?</h3>
+						<p>October 16, 2012 - 8:00 am</p>
+						<span class="ui-li-count">0</span>
+					</a>
+				</li>																
+
+			</ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>
+	</div>
+	
+	<div data-role="page" id="news1" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Latest Poll Feeds</h1>
+		</div>
+						
+		<br />
+	<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content" data-filter="true"> <center><img src="electioncenter.png" />
+			<p>Get your "I Voted Today" Window Decal while supplies last!</p>
+			<div>
+				<a href="#Construction"><img src="i-voted-today.png" alt="I Voted Today!" width="300" height="300" /></a></center>
+
+			</div>	
+		</div>
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid" class="ui-btn-active">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+
+	
+<!--MY FORM ADDON-->	
+	<div data-role="page" id="myorder" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<center><a href="#home"><img src="fl-logo.png" alt="logo" /></center></a>
+		</div>	
+		<br /><br /><br />		
+		<a href="#myorder"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		<div data-role="content">
+		
+			<form action="" id="myorder"> <!-- removed method="post" -->			
+				<div>
+					<a href="#showdata" id="displayLink" data-role="button">Display Data</a>
+					<a href="#" id="clear" data-role="button">Clear Storage</a>
+				</div>
+				<br />
+						
+				<div data-role="fieldcontain">
+					<label for="fname">Name:</label>
+					<input type="text" name="fname" id="fname" value="" placeholder="First and last name" class="required"/>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="email">Email:</label>
+					<input type="text" name="email" id="email" value="" placeholder="me@where.com" class="required email"/>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="url">Home Page:</label>
+					<input type="text" name="url" id="url" value="" placeholder="http://mysite.com" class="required url"/>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="sex">Gender:</label>
+					<select name="sex" id="sex" data-role="slider" data-theme="e">
+						<option value="off">Male</option>
+						<option value="on">Female</option>
+					</select>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<fieldset data-role="controlgroup">
+						<legend>Are you 18 and Up?</legend>
+						<input type="radio" value="No" name="verify" id="verify-1" class="required"/>
+						<label for="verify-1">No</label>
+						<input type="radio" value="Yes" name="verify" id="verify-2"/>
+						<label for="verify-2">Yes</label>
+					</fieldset>
+				</div>
+				
+	
+				<div data-role="fieldcontain">
+   					<label for="borndate">Date of Birth:</label>
+					<input name="borndate" value="" placeholder="MM/DD/YYYY" id="borndate" type="date" data-role="datebox" data-options='{"mode": "flipbox"}'>
+				</div>
+
+							
+				<div data-role="fieldcontain">
+					<label for="groups" class="select">Candidate Selection:</label>
+					<select name="groups" id="groups" data-native-menu="false" class="required">
+
+						<option data-placeholder="true">Please Select One</option>
+						<optgroup label="Democrat">
+							<option value="daisy-1a">Barack Obama</option>
+							<option value="daisy-1b">Randall Terry</option>
+						</optgroup>
+						<optgroup label="Republican">
+							<option value="lily-1a">Mitt Romney</option>
+							<option value="lily-1b">Newt Gingrich</option>
+							<option value="lily-1c">Ron Paul</option>
+							<option value="lily-1d">Herman Cain</option>
+							<option value="lily-1e">Rick Santorum</option>
+						</optgroup>
+						<optgroup label="Independent">
+							<option value="orchid-1a">Joseph Schriner</option>
+							<option value="orchid-1b">James McCall</option>
+						</optgroup>
+						<optgroup label="Libertarian">
+							<option value="rose-1a">Gary Johnson</option>
+						</optgroup>					
+					
+					</select>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="quantity">Number of persons in my household:</label><br />
+					<input type="range" name="quantity" id="quantity" value="3" min="1" max="15" data-highlight="true"/>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="select">Marital Status:</label>
+						<select name="select" id="select-choice1">
+							<option value="single">Single</option>
+							<option value="Married">Married</option>
+							<option value="divorced">Divorced</option>
+							<option value="widowed">Widowed</option>
+						</select>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<label for="comments">Additional Info:</label>
+					<textarea value="" placeholder="More info about your vote..."></textarea>
+				</div>
+				
+				<div data-role="fieldcontain">
+    				<fieldset data-role="controlgroup">
+	   					<legend>Agree to the terms:</legend>
+	   					<input type="checkbox" name="terms" id="terms" value="I agree" class="custom" />
+	   					<label for="terms">I agree</label>
+    				</fieldset>
+				</div>
+				
+				<div data-role="fieldcontain">
+					<input type="submit" id="submit" value="Submit" data-theme="b" /><br />
+					<input type="reset" value="Clear All" data-theme="a" />
+				</div>	
+											
+				<a href="#ordererrors" id="myerrorslink" data-rel="dialog" data-transition="pop">Open Errors</a>
+				
+			</form>
+		
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="order" data-theme="b">
+			<div data-role="navbar">
+				<ul>				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Vote</a></li>
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+	
+	<div data-role="page" id="showdata" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Display data</h1>
+		</div>
+
+		<div data-role="content" id="data">
+			<ul data-role="listview" data-insert="true" id="contact1">
+			</ul>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear" class="ui-btn-active">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Order</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>		
+	
+	<div data-role="dialog" id="ordererrors">
+	
+		<div data-role="header" data-position="fixed">
+			<h1>Missing Items</h1>
+		</div>
+		
+		<div data-role="content">
+		<ul>
+			<li>Test</li>
+		</ul>
+		</div>
+	</div>	
+
+<!--json data-->
+	<div data-role="page" id="myjsondata" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>json data</h1>
+		</div>
+
+			<div id="myxhr">
+				<div id="contact1">
+					<div class="contact">
+						<p>Name:</p>
+						<p>Email:</p>
+						<p>URL:</p>
+						<p>Sex:</p>
+						<p>Flower Type:</p>
+						<p>Date of Birth:</p>
+						<p>Quantity:</p>
+						<p>Additional Info:</p>
+						<p>TOS:</p>
+					</div>
+				</div>
+			</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear" class="ui-btn-active">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Order</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+<!--json data end-->
+
+<!--xml data-->
+	<div data-role="page" id="xmldata" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>XML data</h1>
+		</div>
+
+			<div id="myxhr2">
+				<div id="contact2">
+					<div class="contact">
+						<p>Name:</p>
+						<p>Email:</p>
+						<p>URL:</p>
+						<p>Sex:</p>
+						<p>Flower Type:</p>
+						<p>Date of Birth:</p>
+						<p>Quantity:</p>
+						<p>Additional Info:</p>
+						<p>TOS:</p>
+					</div>
+				</div>
+			</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear" class="ui-btn-active">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Order</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+<!--xml data end-->
+
+<!--csv data-->
+	<div data-role="page" id="csvdata" data-add-back-btn="true">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>CSV data</h1>
+		</div>
+
+			<div id="myxhr3">
+				<div id="contact1">
+					<div class="contact">
+						<p>Name:</p>
+						<p>Email:</p>
+						<p>URL:</p>
+						<p>Sex:</p>
+						<p>Flower Type:</p>
+						<p>Date of Birth:</p>
+						<p>Quantity:</p>
+						<p>Additional Info:</p>
+						<p>TOS:</p>
+					</div>
+				</div>
+			</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="home" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="grid">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear" class="ui-btn-active">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Order</a></li>
+					
+				
+				</ul>
+			
+			</div>
+		</div>			
+	</div>
+<!--csv data end-->	
+	
+	<div data-role="page" id="datapage">
+	
+		<div data-role="header" data-position="fixed" data-theme="b">
+		<center><a href="#home"><img src="fl-logo.png" alt="logo" /></center></a>
+		</div>	
+		<br />
+		<a href="#tulip"><center><img src="cta2.png" alt="cta" width="320" height="148" /></center></a>
+		
+		<div data-role="content">
+			<ul data-role="listview"  data-filter="true" data-inset="true">
+				<li><a href="#myjsondata">
+					<h3>json Data</h3>
+					<p>View my json Data.</p>
+				</a></li>
+				
+				<li><a href="#xmldata">
+					<h3>XML Data</h3>
+					<p>View my XML Data.</p>
+				</a></li>
+				
+				<li><a href="#csvdata">
+					<h3>CSV Data</h3>
+					<p>View my CSV Data.</p>
+				</a></li>				
+			</ul> 			
+		</div> 
+		
+		<div data-role="footer" data-position="fixed" data-id="datapage" data-theme="b">
+			<div data-role="navbar">
+			
+				<ul>
+				
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#GitHub" data-icon="gear">GitHub</a></li>
+					<li><a href="#datapage" data-icon="gear" class="ui-btn-active">Data</a></li>
+					<li><a href="#search" data-icon="search">Search</a></li>
+					<li><a href="#myorder" data-icon="grid">Order</a></li>
+				
+				</ul>
+			
+			</div>
+		</div>
+				
+	</div>
+												
+	<!-- JavaScript under here -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.min.js"></script>	
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="libs/jquery.mobile.pagination.js"></script>
+	<script type="text/javascript" src="json.js"></script>	
+	<script type="text/javascript" src="main.js"></script>
+
+</body>
 </html>

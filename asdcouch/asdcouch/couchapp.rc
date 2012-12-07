@@ -1,7 +1,10 @@
 {
   "env": {
-    "default": {
+    "local": {
       "db": "http://127.0.0.1:5984/asdwkthree"
-    }
+    },
+    "cloudant": {
+      "db": "https://clubugly:zbadguy1@clubugly.cloudant.com/asdwkthree" 
+    }     
   }
 }
