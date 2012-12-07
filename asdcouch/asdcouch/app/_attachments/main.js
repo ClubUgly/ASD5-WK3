@@ -4,124 +4,8 @@
     //Cast My Vote
 
 
-//JSON DATA
-$(function(){
-	$('#myxhr').empty();
-	$.ajax({
-		url:	'xhr/data.json',
-		type: 'GET',
-		dataType:	'json',
-		success: function(response){
-			for(var i=0, j=response.contact1.length; i<j; i++){
-				var cont = response.contact1[i];
-				$(''+
-					'<div class="contact">'+
-						'<p>'+ 'Name: ' + cont.fname +'</p>'+
-						'<p>'+ 'Email: ' + cont.email +'</p>'+
-						'<p>'+ 'Website: ' + cont.url +'</p>'+
-						'<p>'+ 'Gender: ' + cont.sex +'</p>'+
-						'<p>'+ 'Candidate Selection: ' + cont.groups +'</p>'+
-						'<p>'+ 'Date of Birth: ' + cont.borndate +'</p>'+
-						'<p>'+ 'Number of persons in household: ' + cont.quantity +'</p>'+
-						'<p>'+ 'Additional Info: ' + cont.comments +'</p>'+
-						'<p>'+ 'Agree to terms: ' + cont.terms +'</p>'+'<hr />'+
-					'</div>'
-				).appendTo('#myxhr');
-				console.log(response);
-			};
-		}
-	});
-
-});
-
-//XML DATA
-$(function(){
-	$('#myxhr2').empty();	
-	$.ajax({
-		url:	'xhr/data.xml',
-		type: 'GET',
-		dataType:	'xml',
-		success: function(xml){			
-				$(xml).find("item").each(function(){
-    				var fname = $(this).find('fname').text();
-    				var email = $(this).find('email').text();
-    				var url = $(this).find('url').text();
-    				var sex = $(this).find('sex').text();
-    				var groups = $(this).find('groups').text();
-    				var borndate = $(this).find('borndate').text();
-    				var quantity = $(this).find('quantity').text();
-    				var comments = $(this).find('comments').text();
-    				var terms = $(this).find('terms').text();
-    				
-    			 $(''+
-						'<div class="contact">'+
-							'<p>'+ 'Name: ' + fname +'</p>'+
-							'<p>'+ 'Email: '+ email +'</p>'+
-							'<p>'+ 'Website: '+ url +'</p>'+
-							'<p>'+ 'Gender: ' + sex +'</p>'+
-							'<p>'+ 'Candidate Selection: ' + groups +'</p>'+
-							'<p>'+ 'Date of Birth: ' + borndate +'</p>'+
-							'<p>'+ 'Number of persons in household: ' + quantity +'</p>'+
-							'<p>'+ 'Additional Info: ' + comments +'</p>'+
-							'<p>'+ 'Agree to terms: ' + terms +'</p>'+
-						'</div><hr />'		
-				).appendTo('#myxhr2');
-				console.log(xml);
-				
-			
-				});
-			}
-	});
-
-});
-
-//CSV DATA
-$(function(){
-	$('#myxhr3').empty();
-	$.ajax({
-		url:	'xhr/data.csv',
-		type: 'GET',
-		dataType:	'text',
-        success: function(data) {       
-         		var allTextLines = data.split(/\r\n|\n/);
-     			var headers = allTextLines[0].split(',');
-     			var lines = [];
 
 
-					for (var i=1; i<allTextLines.length; i++) {
-						var data = allTextLines[i].split(',');
-						if (data.length == headers.length) {
-							var votes = [];
-							
-							for (var j=0; j<headers.length; j++) {
-									votes.push(data[j]); //puts each voter into the array.
-							}
-							lines.push(votes); // puts the voter array into the main array.
-						}
-
-					}
-					for (var v=0; v<lines.length; v++){
-							var avote = lines[v];
-					$(''+
-								'<div class="contact">'+
-								'<p>'+ 'Name: ' + avote[0] +'</p>'+
-								'<p>'+ 'Email: ' + avote[1] +'</p>'+
-								'<p>'+ 'Website: ' + avote[2] +'</p>'+
-								'<p>'+ 'Gender: ' + avote[3] +'</p>'+
-								'<p>'+ 'Candidate Selection: ' + avote[4] +'</p>'+
-								'<p>'+ 'Date of Birth: ' + avote[5] +'</p>'+
-								'<p>'+ 'Number of persons in household: ' + avote[6] +'</p>'+
-								'<p>'+ 'Additional Info: ' + avote[7] +'</p>'+
-								'<p>'+ 'Agree to terms: ' + avote[8] +'</p>'+
-								'</div><hr />'
-							).appendTo('#myxhr3');
-					console.log(lines);	
-					}						
-							
-			}
-		});
-
-});
 
 
 // Wait until the DOM is ready.
@@ -170,26 +54,41 @@ $('#myorder').on('pageinit', function () {
 		}
 	}
 	
-	function toggleControls(n){
-		switch(n){
-			case "on":
-				$('#myorder').addClass("none");
-				$('#clear').addClass("inline");
-				$('#displayLink').addClass("none");
-				$('#addNew').addClass("inline");
-				break;
-			case "off":
-				$('#myorder').addClass("block");
-				$('#clear').addClass("inline");
-				$('#displayLink').addClass("inline");
-				$('#addNew').addClass("none");
-				$('#items').addClass("none");				
-				break;
-			default:
-				return false;		
-		}
-	}
-	
+	 function getData() {
+      console.log("testing");
+     $('#myxhr').empty();
+        $.ajax({
+            url: "_view/contacts",
+            type: "GET",
+            dataType: "json",
+            success: function(result) {
+             console.log(result);
+             
+             $.each(result.rows, function(index, contact){
+            
+                 $(''+
+'<li>'+
+'<p>'+"Name: "+ contact.value.fname + '<br />' + '</p>'+
+'<p>'+"Email: "+ contact.value.email + '<br />' + '</p>'+
+'<p>'+"Website: "+ contact.value.url + '<br />' + '</p>'+
+'<p>'+"Gender: "+ contact.value.sex + '<br />' + '</p>'+
+'<p>'+"Candidate Selection: "+ contact.value.groups + '<br />' + '</p>'+
+'<p>'+"Date of Birth: "+ contact.value.borndate + '<br />' + '</p>'+
+'<p>'+"Number of persons in household: "+ contact.value.quantity + '<br />' + '</p>'+
+'<p >'+"Additional Info: "+ contact.value.comments+ '<br />' + '</p>'+
+'<p>'+"Agree to terms: "+ contact.value.terms + '<br />' + '</p>'+
+'</li>'
+                
+                 ).appendTo("#myxhr");
+                
+                });
+                $('#myxhr').listview('refresh');
+            },	
+             error: function(data) {}
+      });
+    }
+    
+    	
 	function storeData(key){
 		//if there is no key, this means this is a brand new item and we need a new key
 		console.log('storeData');
@@ -217,13 +116,13 @@ $('#myorder').on('pageinit', function () {
 			item.terms 		= ["TOS:", $('#terms').val()];
 			//save data into local storage: Use Stringify to convert our object to string
 		localStorage.setItem(id, JSON.stringify(item));
-		alert("Shopping Info Saved!");	
+		alert("Vote Nulled!");	
 	}
 	
 	function getData(){
-		toggleControls("on");
+		//toggleControls("on");
 		if(localStorage.length === 0){
-			autoFillData();
+			//autoFillData();
 			alert("There is no data in Local Storage so default data was added.");
 		}
 		//write data from local storage to the browser
@@ -295,8 +194,6 @@ $('#myorder').on('pageinit', function () {
 		var value = localStorage.getItem(this.key);
 		var item = JSON.parse(value);
 		
-		//show the form
-		toggleControls("off");
 		
 		//populate the form fields with current localStorage values.
 		$('#fname').val(item.fname[1]);
@@ -329,13 +226,13 @@ $('#myorder').on('pageinit', function () {
 		editSubmit.key = this.key;
 	}
 
-	function autoFillData(){
+	//function autoFillData(){
 		//Store the JSON OBJECT in local storage
-		for(var n in json){
-			var id 			= Math.floor(Math.random()*100000001);
-			localStorage.setItem(id, JSON.stringify(json[n]));
-		}
-	}
+		//for(var n in json){
+			//var id 			= Math.floor(Math.random()*100000001);
+			//localStorage.setItem(id, JSON.stringify(json[n]));
+		//}
+	//}
 	
 	//DELETE FUNCTION
 	function deleteItem(){
