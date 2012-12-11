@@ -257,7 +257,7 @@ $('#myorder').on('pageinit', function () {
 	
 	var validate = function(){
 		console.log('test Validate function here');
-		var myForm = $('#myorder');
+		var myForm = $('#myorderform');
 			myerrorslink = $('#myerrorslink');
 	
 	myForm.validate({
