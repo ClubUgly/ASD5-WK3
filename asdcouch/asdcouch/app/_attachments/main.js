@@ -1,10 +1,7 @@
     //John Williams
-    //Oct 25, 2012
-    //ASD WK 4
+    //Dec,06, 2012
+    //ASD WK 3
     //Cast My Vote
-
-
-
 
 
 
@@ -13,11 +10,10 @@ $('#myorder').on('pageinit', function () {
 	console.log("Home Page loaded.");
 
 	//Variable defaults
-	var CandidateSelection = ["--Choose your Candidate--", "Barack Obama", "Mitt Romney", "Ron Paul", "James McCall", "Gary Johnson"],
-		sexValue,
-		termsValue = "No",
-		errMsg = $('#errors');
-		
+	var candidateSelection = ["--Choose your Candidate--", "Barack Obama", "Mitt Romney", "Ron Paul", "James McCall", "Gary Johnson"];
+		var sexValue;
+		var termsValue = "No";
+		var errMsg = $('#errors');		
 		var id;
 	
 	//Create select field element and populate with options.
@@ -26,9 +22,9 @@ $('#myorder').on('pageinit', function () {
 			selectLi = $('select'),
 			makeSelect = $('<select></select>');
 			makeSelect.attr("id", "groups");
-		for (var i=0, j=CandidateSelection.length; i<j; i++){
+		for (var i=0, j=candidateSelection.length; i<j; i++){
 			var makeOption = $('<option></option>');
-			var optText = CandidateSelection[i];
+			var optText = candidateSelection[i];
 			makeOption.attr("value", optText);
 			makeOption.html = optText;
 			makeSelect.append(makeOption);
@@ -56,7 +52,7 @@ $('#myorder').on('pageinit', function () {
 	
 	 function getData() {
       console.log("testing");
-     $('#myxhr').empty();
+     $('#contact1').empty();
         $.ajax({
             url: "_view/contacts",
             type: "GET",
@@ -67,22 +63,22 @@ $('#myorder').on('pageinit', function () {
              $.each(result.rows, function(index, contact){
             
                  $(''+
-'<li>'+
-'<p>'+"Name: "+ contact.value.fname + '<br />' + '</p>'+
-'<p>'+"Email: "+ contact.value.email + '<br />' + '</p>'+
-'<p>'+"Website: "+ contact.value.url + '<br />' + '</p>'+
-'<p>'+"Gender: "+ contact.value.sex + '<br />' + '</p>'+
-'<p>'+"Candidate Selection: "+ contact.value.groups + '<br />' + '</p>'+
-'<p>'+"Date of Birth: "+ contact.value.borndate + '<br />' + '</p>'+
-'<p>'+"Number of persons in household: "+ contact.value.quantity + '<br />' + '</p>'+
-'<p >'+"Additional Info: "+ contact.value.comments+ '<br />' + '</p>'+
-'<p>'+"Agree to terms: "+ contact.value.terms + '<br />' + '</p>'+
-'</li>'
+					'<li>'+
+						'<p>'+"Name: "+ contact.value.fname + '<br />' + '</p>'+
+						'<p>'+"Email: "+ contact.value.email + '<br />' + '</p>'+
+						'<p>'+"Website: "+ contact.value.url + '<br />' + '</p>'+
+						'<p>'+"Gender: "+ contact.value.sex + '<br />' + '</p>'+
+						'<p>'+"Candidate Selection: "+ contact.value.groups + '<br />' + '</p>'+
+						'<p>'+"Date of Birth: "+ contact.value.borndate + '<br />' + '</p>'+
+						'<p>'+"Number of persons in household: "+ contact.value.quantity + '<br />' + '</p>'+
+						'<p >'+"Additional Info: "+ contact.value.comments+ '<br />' + '</p>'+
+						'<p>'+"Agree to terms: "+ contact.value.terms + '<br />' + '</p>'+
+					'</li>'
                 
-                 ).appendTo("#myxhr");
+                 ).appendTo("#contact1");
                 
                 });
-                $('#myxhr').listview('refresh');
+                $('#contact1').listview('refresh');
             },	
              error: function(data) {}
       });
@@ -118,7 +114,7 @@ $('#myorder').on('pageinit', function () {
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Vote Nulled!");	
 	}
-	
+/*	
 	function getData(){
 		//toggleControls("on");
 		if(localStorage.length === 0){
@@ -153,7 +149,7 @@ $('#myorder').on('pageinit', function () {
 			makeItemLinks(localStorage.key(i), linksLi); // Create our edit and delete buttons/links for each item in local storage.
 		}
 	}
-	
+*/	
 	//get the image for the right category being displayed
 	function getImage(catName, makeSubList){
 		var imageLi = $('<li></li>');
@@ -239,10 +235,10 @@ $('#myorder').on('pageinit', function () {
 		var ask = confirm("Are you sure you wish to delete this order?");
 		if(ask){
 			localStorage.removeItem(this.key);
-			alert("Order was deleted!!!");
+			alert("Vote was deleted!!!");
 			window.location.reload();
 		}else{
-			alert("Order was NOT deleted.");
+			alert("Vote was NOT deleted.");
 		}
 	}
 	
@@ -252,7 +248,7 @@ $('#myorder').on('pageinit', function () {
 			alert("There is no data to clear.");
 		}else{
 			localStorage.clear();
-			alert("Shopping order is deleted!");
+			alert("Vote Submission is deleted!");
 			window.location.reload();
 			return false;
 		}
@@ -260,21 +256,23 @@ $('#myorder').on('pageinit', function () {
 	
 	
 	var validate = function(){
-		console.log('test')
+		console.log('test Validate function here');
 		var myForm = $('#myorder');
-	//		myerrorslink = $('#myerrorslink');
+			myerrorslink = $('#myerrorslink');
 	
 	myForm.validate({
-		invalidHandler: function(form, validator){},
-			//myerrorslink.click();
-		//	var html = '';
-		//	for(var key in validator.submitted){
-		//		var label = $('label[for^="'+ key +'"]').not('[generated]');
-		//		var legend = label.closest('fieldset').find('.ui-controlgroup-label');
-		//		var fieldName = legend.length ? legend.text() : label.text();
-		//		html += '<li>' + fieldName +'</li>';
-		//	};
-		//	$('#ordererrors ul').html(html);
+		invalidHandler: function(form, validator){
+			myerrorslink.click();
+			var html = '';
+			for(var key in validator.submitted){
+				var label = $('label[for^="'+ key +'"]').not('[generated]');
+				var legend = label.closest('fieldset').find('.ui-controlgroup-label');
+				var fieldName = legend.length ? legend.text() : label.text();
+				html += '<li>' + fieldName +'</li>';
+			}
+			$('#ordererrors ul').html(html);		
+		},
+
 		
 		submitHandler: function(){
 			var data = myForm.serializeArray();
@@ -306,3 +304,7 @@ $(document).ready(function(){
 
 
 });
+
+//$(document).on("pageshow", "#details", function() {
+//Display details for a specific item (see video wk4 gotoTraining Time=30:41)
+//});
