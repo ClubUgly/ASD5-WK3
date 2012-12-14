@@ -1,6 +1,6 @@
     //John Williams
-    //Dec,06, 2012
-    //ASD WK 3
+    //Dec,13, 2012
+    //ASD WK 4
     //Cast My Vote
 
 
@@ -33,14 +33,14 @@ $('#myorder').on('pageinit', function () {
 	}
 	
 	//find value of selected radio buttons.
-	function getSelectedRadio(){
+/*	function getSelectedRadio(){
 		var radios = document.forms[0].sex;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].checked){
 				sexValue = radios[i].value;
 			}
 		}
-	}
+	} */
 	
 	function getCheckboxValue(){
 		if($('terms').checked){
@@ -50,8 +50,8 @@ $('#myorder').on('pageinit', function () {
 		}
 	}
 	
-	 function getData() {
-      console.log("testing");
+	function getData(){
+      console.log("Running the GetData");
      $('#contact1').empty();
         $.ajax({
             url: "_view/contacts",
@@ -71,7 +71,7 @@ $('#myorder').on('pageinit', function () {
 						'<p>'+"Candidate Selection: "+ contact.value.groups + '<br />' + '</p>'+
 						'<p>'+"Date of Birth: "+ contact.value.borndate + '<br />' + '</p>'+
 						'<p>'+"Number of persons in household: "+ contact.value.quantity + '<br />' + '</p>'+
-						'<p >'+"Additional Info: "+ contact.value.comments+ '<br />' + '</p>'+
+						'<p>'+"Additional Info: "+ contact.value.comments+ '<br />' + '</p>'+
 						'<p>'+"Agree to terms: "+ contact.value.terms + '<br />' + '</p>'+
 					'</li>'
                 
@@ -83,37 +83,63 @@ $('#myorder').on('pageinit', function () {
              error: function(data) {}
       });
     }
-    
-    	
+
+
 	function storeData(key){
 		//if there is no key, this means this is a brand new item and we need a new key
 		console.log('storeData');
 		//if(!key){
 			var id = Math.floor(Math.random()*100000001);		
-		//}else{
+/*					}else{
 			//set the id to the existing key were editing so that it will save over the data
 			//the key is the same key thats been passed along from the editSubmit even handle
 			//to the validate function, and then passed here into the storeData function.
 		//	id = key;
-		//}
+		}
+*/
 		// collect all form field values and store in an object
 		// object properties contain array with the form label and input value
-		getSelectedRadio();
+		
+//		getSelectedRadio(); see below marianne note:
 		getCheckboxValue();
-		var item 			= {};
-			item.fname		= ["Name:", $('#fname').val()];
-			item.email		= ["Email:", $('#email').val()];
-			item.url 		= ["Home Page:", $('#url').val()];
-			item.sex		= ["Sex:", sexValue];			
-			item.borndate 	= ["Date of Birth:", $('#borndate').val()];
-			item.groups	 	= ["Flower Type:", $('#groups').val()];
-			item.quantity	= ["Quantity:", $('#quantity').val()];
-			item.comments 	= ["Additional Info:", $('#comments').val()];
-			item.terms 		= ["TOS:", $('#terms').val()];
-			//save data into local storage: Use Stringify to convert our object to string
-		localStorage.setItem(id, JSON.stringify(item));
-		alert("Vote Nulled!");	
+		var item			= {};
+			item._id		= 'contact' + id; //used random from line 92
+			item.fname		= $('#fname').val();
+			item.email		= $('#email').val();
+			item.url		= $('#url').val();
+//			item.sex		= sexValue;			
+			item.borndate	= $('#borndate').val();
+			item.groups		= $('#groups').val();
+			item.quantity	= $('#quantity').val();
+			item.comments	= $('#comments').val();
+			item.terms		= $('#terms').val();
+			
+		//save data into local storage: Use Stringify to convert our object to string
+		//localStorage.setItem(id, JSON.stringify(item));
+		
+		$.couch.db("asdwkthree").saveDoc(item, {
+			success: function(data) {
+				console.log(data);
+			},
+			error: function(status) {
+				console.log("Couch Save No Go!");
+			}
+		});	
+		
+		alert("Your Vote Casted Successfully!");	
+//	}
+		$.couch.db("asdwkthree").view(item, {
+    		success: function(data) {
+        		console.log(data);
+    		},
+    		error: function(status) {
+        		console.log("Couch View No Go!");
+    		},
+
+		});	
+		alert("What goes here?");	
 	}
+
 /*	
 	function getData(){
 		//toggleControls("on");
@@ -195,19 +221,22 @@ $('#myorder').on('pageinit', function () {
 		$('#fname').val(item.fname[1]);
 		$('#email').val(item.email[1]);
 		$('#url').val(item.url[1]);
-		var radios = document.forms[0].sex;
+/*		var radios = document.forms[0].sex;
 		for(var i=0; i<radios.length; i++){
-			if(radios[i].val() == "Male" && item.sex[1] == "Male"){
+			if(radios[i].val() === "Male" && item.sex[1] === "Male"){
 				radios[i].attr("checked", "checked");
-			}else if(radios[i].val() == "Female" && item.sex[1] == "Female"){
+			}else if(radios[i].val() === "Female" && item.sex[1] === "Female"){
 				radios[i].attr("checked", "checked");
 			}
-		}
+		} 
+*/ //Contact Marianne later for help on this radios;
+
+
 		$('#borndate').val(item.borndate[1]);
 		$('#groups').val(item.groups[1]);
 		$('#quantity').val(item.quantity[1]);
 		$('#comments').val(item.comments[1]);
-		if(item.terms[1] == "Yes"){
+		if(item.terms[1] === "Yes"){
 			$('#terms').attr("checked", "checked");
 		}
 		
@@ -221,14 +250,15 @@ $('#myorder').on('pageinit', function () {
 		editSubmit.on("click", validate);
 		editSubmit.key = this.key;
 	}
-
-	//function autoFillData(){
-		//Store the JSON OBJECT in local storage
-		//for(var n in json){
-			//var id 			= Math.floor(Math.random()*100000001);
-			//localStorage.setItem(id, JSON.stringify(json[n]));
-		//}
-	//}
+/*
+	function autoFillData(){
+		Store the JSON OBJECT in local storage
+		for(var n in json){
+			var id			= Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
+	}
+*/
 	
 	//DELETE FUNCTION
 	function deleteItem(){
@@ -238,17 +268,17 @@ $('#myorder').on('pageinit', function () {
 			alert("Vote was deleted!!!");
 			window.location.reload();
 		}else{
-			alert("Vote was NOT deleted.");
+			alert("Vote Cast was NOT deleted!");
 		}
 	}
 	
 	//CLEAR FUNCTION
 	function clearLocal(){
 		if(localStorage.length === 0){
-			alert("There is no data to clear.");
+			alert("There is no is not Vote Cast data to clear.");
 		}else{
 			localStorage.clear();
-			alert("Vote Submission is deleted!");
+			alert("Vote Cast submission is deleted!");
 			window.location.reload();
 			return false;
 		}
